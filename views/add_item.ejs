@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Item</title>
+    <!-- BOOTSTRAP CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<script src="https://kit.fontawesome.com/be2ceee064.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/add.css">
+</head>
+<body>
+	<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h1><i class="fas fa-hand-holding-usd"></i>BechDe!</h1>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/"><i class="fas fa-home"></i>       Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/add_item"><i class="fas fa-plus-circle"></i>Add Item</a>
+      </li>
+      <li>
+        <a class="nav-link" href="/market"><i class="fa fa-eye" aria-hidden="true"></i>Market</a>
+      </li>
+   
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li >
+        <a href="/logout" class="btn btn-danger">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="container">
+		
+                     
+                     <% if(typeof msg != 'undefined') {%>
+                     <div class="alert alert-info" role="alert"><%=msg %></div>
+                     <% } %>
+
+                
+		<form action="/add_item" method="POST" enctype="multipart/form-data" class=rounded>
+                    
+                       
+                        <div class="form-group">
+                          <label for="Title" bg-primary>Title of item </label>
+                          <input type="text" name="name" id="Title" class="form-control" placeholder="Thomas Calculus 5th edition" required>
+                        </div>
+                        <div class="form-group">
+						   <label for="description">Brief Description</label>
+						   <textarea class="form-control" id="description" rows="3" placeholder="Heavy-Moderate used ,appendix B is missing,Moderate markings with pens,Cover absent" name="description" required></textarea>
+  						</div>
+                         <div class="form-group">
+                        <label for="Price">Price</label>
+                          <input type="text" name="price" id="Price" class="form-control" placeholder="100" required>
+                        </div>
+                        <div class="form-group">
+						   <label for="image">Photo of item (accepted formats are png,jpeg and jpg)</label>
+						   <input type="file" class="form-control-file" id="image" name="myImage",accept="image/*">
+  						</div>
+  						<h4>Check all tags that apply to your item<br>(recomended to select at least one to improve search results)</h4>
+  						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="tags" id="heavy_use" value="heavy_use">
+						  <label class="form-check-label" for="heavy_use">heavy use</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="tags" id="moderate_use" value="moderate_use">
+						  <label class="form-check-label" for="moderate_use">moderate use</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="tags" id="lightly_used" value="lightly_used">
+						  <label class="form-check-label" for="lightly_used">lightly used</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="tags" id="new" value="new">
+						  <label class="form-check-label" for="new">New</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="tags" id="books" value="books">
+						  <label class="form-check-label" for="books">Book</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="tags" id="bicycle" value="bicycle">
+						  <label class="form-check-label" for="bicycle">Bicycle</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="tags" id="lab_uniform" value="lab_uniform">
+						  <label class="form-check-label" for="lab_uniform">lab uniform</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="tags" id="stationary" value="stationary">
+						  <label class="form-check-label" for="stationary">Stationary</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="tags" id="utilities" value="utilities">
+						  <label class="form-check-label" for="utilities">Utilities</label>
+						</div>
+						
+						
+
+						<br><br>
+                        <button type="submit" class="btn btn-success">Add Item</button>
+                    </form>
+
+
+
+
+
+
+
+	</div>
+
+	
+
+</body>
+</html>

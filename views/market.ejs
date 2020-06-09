@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/market.css">
+<script src="https://kit.fontawesome.com/be2ceee064.js" crossorigin="anonymous"></script>
+
+    <title>Market</title>
+</head>
+<body> 
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h1><i class="fas fa-hand-holding-usd"></i>BechDe!</h1>
+ 
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/"><i class="fas fa-home"></i>       Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/add_item"><i class="fas fa-plus-circle"></i>Add Item</a>
+      </li>
+      <li>
+        <a class="nav-link" href="/market"><i class="fa fa-eye" aria-hidden="true"></i>Market</a>
+      </li>
+      
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li >
+        <a href="/logout" class="btn btn-danger">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+<br>
+
+    <div class="container">
+      
+      <div class="jumbotron"><h4 class="display-4">Select appropriate tags to filter results</h4>
+        <div class="lead">
+        <form action="/filter" method="POST">
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="tags" id="heavy_use" value="heavy_use">
+              <label class="form-check-label" for="heavy_use">heavy use</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="tags" id="moderate_use" value="moderate_use">
+              <label class="form-check-label" for="moderate_use">moderate use</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="tags" id="lightly_used" value="lightly_used">
+              <label class="form-check-label" for="lightly_used">lightly used</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="tags" id="new" value="new">
+              <label class="form-check-label" for="new">New</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="tags" id="books" value="books">
+              <label class="form-check-label" for="books">Book</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="tags" id="bicycle" value="bicycle">
+              <label class="form-check-label" for="bicycle">Bicycle</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="tags" id="lab_uniform" value="lab_uniform">
+              <label class="form-check-label" for="lab_uniform">lab uniform</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="tags" id="stationary" value="stationary">
+              <label class="form-check-label" for="stationary">Stationary</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="tags" id="utilities" value="utilities">
+              <label class="form-check-label" for="utilities">Utilities</label>
+
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-filter" ></i>Apply filter</button>
+        </form>
+
+      </div>
+      <br>
+      </div>
+      
+    
+         <% if (prods.length > 0) { %>
+
+                   
+                      
+                        <% for (var i=0;i<(Math.ceil(prods.length/4));i++) { %>
+                         <div class="row" >
+                        
+                          <% if(((i+1)*4)<=prods.length){for(var j=i*4;j<((i+1)*4);j++){ %>
+
+                            <div class="col-3">
+                                <div class="card">
+                                    
+                                    <img src="<%= prods[j].image_url %>" alt="<%= prods[j].name %>" class="card-img-top">
+                                
+
+
+                                    <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= prods[j].name %>
+                                    </h5>
+                                    <p class="card-text">Cost: <%= prods[j].price %></p>
+                                    <form action="/product_details" method="POST" >
+                                        <button class="btn btn-info" type="submit" name="id" value="<%=prods[j].id%>">Details</button>
+                                    </form>
+                               
+                                
+                                    
+                                        
+
+                                   </div>
+                                    
+                                </div>
+                                    
+                                   
+                                    
+                                </div>
+                                
+                           
+                            <% }} else {for(var j=(i*4); j<(prods.length);j++){ %>
+                            
+
+                            <div class="col-3">
+                                <div class="card">
+                                    
+                                    <img src="<%= prods[j].image_url %>" alt="<%= prods[j].title %>" class="card-img-top">
+                                
+
+
+                                    <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= prods[j].name %>
+                                    </h5>
+                                    <p class="card-text">Cost: <%= prods[j].price %></p>
+                                    <form action="/product_details" method="POST" >
+                                        <button class="btn btn-info" type="submit" name="id" value="<%=prods[j].id%>">Details</button>
+                                    </form>
+                               
+                                
+                                    
+                                        
+
+                                   </div>
+                                    
+                                </div>
+                                    
+                                   
+                                    
+                                </div>
+                            <% }} %>
+
+
+
+                          
+
+                          </div>
+                          <br><br>
+                            <% } %>
+                    
+                    
+                    <% } else { %>
+                    <div class="alert alert-warning" role="alert">
+                        <h1>No Products Found!</h1>
+                      </div>
+                        <% } %>
+
+       
+      
+
+</div>
+</body>
+</html>
